@@ -7,3 +7,5 @@ commonLabels:
   app: 7dtd
   env: prod
 
+patches:
+  - path: deployement-patch.yaml

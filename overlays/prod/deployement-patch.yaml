@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 7dtd
+spec:
+  template:
+    spec:
+      containers:
+        - name: 7dtd      
+          env:
+            - name: PUID
+              value: 0
+            - name: GUID
+              value: 0
