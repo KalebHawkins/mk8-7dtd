@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 7dtd
+  labels:
+    app: 7dtd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 7dtd
+  template:
+    metadata:
+      labels:
+        app: 7dtd
+    spec:
+      volumes:
+        - name: maps
+          persistentVolumeClaim:
+            claimName: 7dtd-maps
+        - name: config
+          persistentVolumeClaim:
+            claimName: 7dtd-config
+        - name: logs
+          persistentVolumeClaim:
+            claimName: 7dtd-logs
+        - name: backups
+          persistentVolumeClaim:
+            claimName: 7dtd-backups
+        - name: lgsm
+          persistentVolumeClaim:
+            claimName: 7dtd-lgsm
+      containers:
+        - name: 7dtd
+          image: docker.io/vinanrra/7dtd-server
+          resources:
+            requests:
+              memory: "16Gi"
+              cpu: "4000m"
+            limits:
+              memory: "16Gi"
+              cpu: 4000m
+          ports:
+            - containerPort: 26900
+              protocol: TCP
+            - containerPort: 26900
+              protocol: UDP
+            - containerPort: 26901
+              protocol: UDP
+            - containerPort: 26902
+              protocol: UDP
+            - containerPort: 8080
+              protocol: TCP        
+          env: 
+            - name: START_MODE
+              value: 1
+            - name: TimeZone
+              value: America/Chicago
+            - name: PUID
+              value: 1000
+            - name: GUID
+              value: 1000
+            - name: VERSION
+              value: stable
+            - name: BACKUP
+              value: NO
+            - name: MONITOR
+              value: YES
+          volumeMounts:
+            - name: maps
+              mountPath: /home/sdtdserver/.local/share/7DaysToDie/
+            - name: config
+              mountPath: /home/sdtdserver/serverfiles/
+            - name: logs
+              mountPath: /home/sdtdserver/log/
+            - name: backups
+              mountPath: /home/sdtdserver/lgsm/backup/
+            - name: lgsm
+              mountPath: /home/sdtdserver/lgsm/config-lgsm/sdtdserver/

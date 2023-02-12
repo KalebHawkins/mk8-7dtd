@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: 7dtd
+spec:
+  selector:
+    app: 7dtd
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 26900
+      targetPort: 26900
+    - protocol: UDP
+      port: 26900
+      targetPort: 26900
+    - protocol: UDP
+      port: 26901
+      targetPort: 26901
+    - protocol: UDP
+      port: 26902
+      targetPort: 26902
+    - protocol: UDP
+      port: 8080
+      targetPort: 8080
