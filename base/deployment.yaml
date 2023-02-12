@@ -32,7 +32,7 @@ spec:
             claimName: sdtd-lgsm
       containers:
         - name: sdtd
-          image: docker.io/vinanrra/sdtd-server
+          image: docker.io/vinanrra/7dtd-server
           resources:
             requests:
               memory: "16Gi"
