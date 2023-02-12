@@ -10,15 +10,20 @@ spec:
     - protocol: TCP
       port: 26900
       targetPort: 26900
+      name: default-port
     - protocol: UDP
       port: 26900
       targetPort: 26900
+      name: default-port2
     - protocol: UDP
       port: 26901
       targetPort: 26901
+      name: default-port3
     - protocol: UDP
       port: 26902
       targetPort: 26902
+      name: default-port4
     - protocol: UDP
       port: 8080
       targetPort: 8080
+      name: webmin
