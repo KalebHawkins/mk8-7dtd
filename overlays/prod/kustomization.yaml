@@ -8,4 +8,4 @@ commonLabels:
   env: prod
 
 patches:
-  - path: deployement-patch.yaml
+  - path: deployment-patch.yaml
