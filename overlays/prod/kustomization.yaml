@@ -6,6 +6,3 @@ nameSuffix: -prod
 commonLabels: 
   app: sdtd
   env: prod
-
-patches:
-  - path: deployment-patch.yaml
