@@ -1,38 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 7dtd
+  name: sdtd
   labels:
-    app: 7dtd
+    app: sdtd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: 7dtd
+      app: sdtd
   template:
     metadata:
       labels:
-        app: 7dtd
+        app: sdtd
     spec:
       volumes:
         - name: maps
           persistentVolumeClaim:
-            claimName: 7dtd-maps
+            claimName: sdtd-maps
         - name: config
           persistentVolumeClaim:
-            claimName: 7dtd-config
+            claimName: sdtd-config
         - name: logs
           persistentVolumeClaim:
-            claimName: 7dtd-logs
+            claimName: sdtd-logs
         - name: backups
           persistentVolumeClaim:
-            claimName: 7dtd-backups
+            claimName: sdtd-backups
         - name: lgsm
           persistentVolumeClaim:
-            claimName: 7dtd-lgsm
+            claimName: sdtd-lgsm
       containers:
-        - name: 7dtd
-          image: docker.io/vinanrra/7dtd-server
+        - name: sdtd
+          image: docker.io/vinanrra/sdtd-server
           resources:
             requests:
               memory: "16Gi"

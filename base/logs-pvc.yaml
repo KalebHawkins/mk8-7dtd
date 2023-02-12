@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: 7dtd-logs
+  name: sdtd-logs
 spec:
   resources:
     requests:
